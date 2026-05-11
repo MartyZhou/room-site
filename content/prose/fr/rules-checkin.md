@@ -1,0 +1,6 @@
+- **Arrivée** à partir de 15h00 — arrivée autonome avec boîte à clé sécurisée
+- **Départ** avant 10h00
+- **11 voyageurs** maximum
+- **Animaux acceptés** sur demande
+- Pas de fêtes ni d'événements
+- Séjours longs (28 jours et plus) autorisés

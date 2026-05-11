@@ -29,6 +29,7 @@
   "gallery": {
     "showAll": "Show all photos",
     "allTitle": "All photos",
+    "allCategory": "All",
     "photoOf": "Photo {n} of the home"
   },
   "about": {
@@ -86,6 +87,19 @@
       "Piano"
     ]
   },
+  "reviews": {
+    "title": "What our guests say",
+    "overall": "Overall rating",
+    "basedOn": "based on {n} reviews",
+    "showAll": "See all reviews on Airbnb"
+  },
+  "rules": {
+    "title": "Things to know",
+    "checkInTitle": "House rules",
+    "healthTitle": "Safety & property",
+    "cancelTitle": "Cancellation policy",
+    "cancelBody": "See full cancellation terms on the listing's Airbnb page."
+  },
   "access": {
     "title": "Guest access"
   },
@@ -101,6 +115,7 @@
     "directTitle": "Pricing & availability",
     "callBtn": "Call",
     "smsBtn": "Send a text",
+    "whatsappBtn": "WhatsApp",
     "emailBtn": "Send an email"
   },
   "contact": {

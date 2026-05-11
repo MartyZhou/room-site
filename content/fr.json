@@ -29,6 +29,7 @@
   "gallery": {
     "showAll": "Afficher toutes les photos",
     "allTitle": "Toutes les photos",
+    "allCategory": "Toutes",
     "photoOf": "Photo {n} de la maison"
   },
   "about": {
@@ -86,6 +87,19 @@
       "Piano"
     ]
   },
+  "reviews": {
+    "title": "Ce que disent nos voyageurs",
+    "overall": "Note globale",
+    "basedOn": "sur {n} commentaires",
+    "showAll": "Voir tous les avis sur Airbnb"
+  },
+  "rules": {
+    "title": "À savoir avant de venir",
+    "checkInTitle": "Règlement intérieur",
+    "healthTitle": "Sécurité et logement",
+    "cancelTitle": "Politique d'annulation",
+    "cancelBody": "Voir les conditions d'annulation détaillées sur la page Airbnb du logement."
+  },
   "access": {
     "title": "Accès des voyageurs"
   },
@@ -101,6 +115,7 @@
     "directTitle": "Tarifs et disponibilités",
     "callBtn": "Appeler",
     "smsBtn": "Envoyer un SMS",
+    "whatsappBtn": "WhatsApp",
     "emailBtn": "Envoyer un email"
   },
   "contact": {

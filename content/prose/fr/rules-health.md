@@ -1,0 +1,5 @@
+- **Détecteur de fumée** et de monoxyde de carbone installés
+- **Arrivée autonome** : boîte à clé sécurisée
+- Présence d'escaliers — les chambres sont à l'étage, un couchage est disponible au salon
+- **Wi-Fi haut débit** et buanderie inclus
+- **Parking gratuit** directement devant la maison

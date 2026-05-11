@@ -3,13 +3,22 @@
 
   let site = null;
   let dict = null;
+  let reviews = null;
   let prose = {};
   const proseCache = {};
   let currentLang = 'fr';
+  let activeCategory = 'all';
 
   // ---------- Utilities --------------------------------------------------
   const getPath = (obj, path) => path.split('.').reduce((o, k) => (o == null ? o : o[k]), obj);
-  const photoSrc = (i) => `public/images/photo-${String(i).padStart(2, '0')}.jpeg`;
+  const photoBase = (i) => `public/images/photo-${String(i).padStart(2, '0')}`;
+  const photoSrc = (i) => `${photoBase(i)}.jpeg`;
+  const photoSrcWebp = (i) => `${photoBase(i)}.webp`;
+  const photoPicture = (i, { alt = '', loading = 'lazy', cls = '' } = {}) => `
+    <picture${cls ? ` class="${cls}"` : ''}>
+      <source srcset="${photoSrcWebp(i)}" type="image/webp" />
+      <img src="${photoSrc(i)}" alt="${alt}" loading="${loading}" />
+    </picture>`;
 
   const loadJSON = async (url) => {
     const res = await fetch(url, { cache: 'no-cache' });
@@ -23,7 +32,7 @@
   };
 
   // Slugs map to content/prose/{lang}/{slug}.md
-  const PROSE_KEYS = ['about', 'access', 'location', 'book-intro', 'book-direct'];
+  const PROSE_KEYS = ['about', 'access', 'location', 'book-intro', 'book-direct', 'rules-checkin', 'rules-health'];
   const loadProse = async (lang) => {
     if (proseCache[lang]) return proseCache[lang];
     const entries = await Promise.all(PROSE_KEYS.map(async (key) => {
@@ -148,6 +157,9 @@
       amenitiesEl.appendChild(li);
     });
 
+    // Reviews
+    renderReviews();
+
     // Lightbox button aria-labels
     document.getElementById('lb-close').setAttribute('aria-label', dict.lightbox?.close || 'Close');
     document.getElementById('lb-prev').setAttribute('aria-label', dict.lightbox?.prev || 'Previous');
@@ -158,6 +170,59 @@
       const on = b.dataset.lang === currentLang;
       b.classList.toggle('active', on);
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  };
+
+  // ---------- Reviews ----------------------------------------------------
+  const renderReviews = () => {
+    const summaryEl = document.getElementById('reviews-summary');
+    const gridEl = document.getElementById('reviews-grid');
+    if (!summaryEl || !gridEl || !reviews) return;
+    const s = reviews.summary || {};
+    const cats = s.categories || {};
+    const basedOn = (dict.reviews?.basedOn || 'based on {n} reviews').replace('{n}', s.count || 0);
+    const catRows = Object.values(cats).map((c) => {
+      const label = c[currentLang] || c.fr || c.en || '';
+      const score = Number(c.score) || 0;
+      const pct = Math.max(0, Math.min(100, (score / 5) * 100));
+      return `
+        <div class="rs-cat">
+          <span class="rs-cat-label">${label}</span>
+          <span class="rs-cat-bar"><span style="width: ${pct}%"></span></span>
+          <span class="rs-cat-score">${score.toFixed(2).replace('.', currentLang === 'fr' ? ',' : '.')}</span>
+        </div>`;
+    }).join('');
+    summaryEl.innerHTML = `
+      <div class="rs-overall">
+        <div class="rs-big">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+          <span class="rs-rating">${s.rating || ''}</span>
+        </div>
+        <div class="rs-overall-text">
+          <strong>${dict.reviews?.overall || 'Overall'}</strong>
+          <span class="muted">${basedOn}</span>
+        </div>
+      </div>
+      <div class="rs-cats">${catRows}</div>`;
+
+    gridEl.innerHTML = '';
+    (reviews.items || []).forEach((r) => {
+      const text = (r.text && (r.text[currentLang] || r.text.fr || r.text.en)) || '';
+      const stars = '★'.repeat(r.rating || 5) + '☆'.repeat(Math.max(0, 5 - (r.rating || 5)));
+      const card = document.createElement('article');
+      card.className = 'review-card';
+      card.innerHTML = `
+        <header>
+          <div class="rc-avatar" aria-hidden="true">${(r.author || '?').charAt(0).toUpperCase()}</div>
+          <div>
+            <div class="rc-author">${r.author || ''}</div>
+            <div class="rc-date muted small">${r.date || ''}</div>
+          </div>
+        </header>
+        <div class="rc-stars" aria-label="${r.rating || 5}/5">${stars}</div>
+        <p class="rc-text"></p>`;
+      card.querySelector('.rc-text').textContent = text;
+      gridEl.appendChild(card);
     });
   };
 
@@ -174,7 +239,7 @@
       const div = document.createElement('div');
       div.className = 'photo';
       const alt = (dict.gallery?.photoOf || 'Photo {n}').replace('{n}', n);
-      div.innerHTML = `<img src="${photoSrc(n)}" alt="${alt}" loading="lazy" />`;
+      div.innerHTML = photoPicture(n, { alt });
       div.addEventListener('click', () => openLightbox(n));
       galleryEl.appendChild(div);
     });
@@ -182,10 +247,11 @@
 
   // ---------- All-photos overlay ----------------------------------------
   const overlay = {
-    el: null, grid: null,
+    el: null, grid: null, tabs: null,
     init() {
       this.el = document.getElementById('photo-overlay');
       this.grid = document.getElementById('po-grid');
+      this.tabs = document.getElementById('po-tabs');
       document.getElementById('po-close').addEventListener('click', () => this.close());
       document.getElementById('show-all').addEventListener('click', () => this.open());
       document.addEventListener('keydown', (e) => {
@@ -193,7 +259,9 @@
       });
     },
     open() {
-      this.render();
+      activeCategory = 'all';
+      this.renderTabs();
+      this.renderGrid();
       this.el.hidden = false;
       this.el.scrollTop = 0;
       document.body.style.overflow = 'hidden';
@@ -202,30 +270,60 @@
       this.el.hidden = true;
       document.body.style.overflow = '';
     },
-    render() {
+    photosFor(category) {
       const total = site.photos?.total || 1;
+      if (category === 'all') {
+        return Array.from({ length: total }, (_, i) => i + 1);
+      }
+      const cat = (site.photos?.categories || {})[category];
+      return (cat?.items || []).filter((n) => n >= 1 && n <= total);
+    },
+    renderTabs() {
+      const cats = site.photos?.categories || {};
+      const keys = ['all', ...Object.keys(cats)];
+      this.tabs.innerHTML = '';
+      keys.forEach((key) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'po-tab' + (key === activeCategory ? ' active' : '');
+        const label = key === 'all'
+          ? (dict.gallery?.allCategory || 'All')
+          : (cats[key]?.[currentLang] || cats[key]?.fr || cats[key]?.en || key);
+        const count = this.photosFor(key).length;
+        btn.innerHTML = `<span>${label}</span><span class="po-tab-count">${count}</span>`;
+        btn.addEventListener('click', () => {
+          activeCategory = key;
+          this.renderTabs();
+          this.renderGrid();
+          this.el.scrollTop = 0;
+        });
+        this.tabs.appendChild(btn);
+      });
+    },
+    renderGrid() {
       const featured = Number(site.photos?.featured) || 1;
+      const total = site.photos?.total || 1;
       const altTpl = dict.gallery?.photoOf || 'Photo {n}';
+      const photos = this.photosFor(activeCategory);
       this.grid.innerHTML = '';
-      for (let i = 1; i <= total; i++) {
+      photos.forEach((i) => {
         const div = document.createElement('div');
         div.className = 'po-photo' + (i === featured ? ' featured' : '');
         const alt = altTpl.replace('{n}', i);
-        div.innerHTML = `
-          <img src="${photoSrc(i)}" alt="${alt}" loading="lazy" />
-          <span class="po-photo-num">${i} / ${total}</span>`;
+        div.innerHTML = `${photoPicture(i, { alt })}<span class="po-photo-num">${i} / ${total}</span>`;
         div.addEventListener('click', () => openLightbox(i));
         this.grid.appendChild(div);
-      }
+      });
     },
   };
 
   // ---------- Lightbox ---------------------------------------------------
   const lb = {
-    el: null, img: null, count: null, current: 1,
+    el: null, img: null, source: null, count: null, current: 1,
     init() {
       this.el = document.getElementById('lightbox');
       this.img = document.getElementById('lb-img');
+      this.source = document.getElementById('lb-source');
       this.count = document.getElementById('lb-count');
       document.getElementById('lb-close').addEventListener('click', () => this.close());
       document.getElementById('lb-next').addEventListener('click', () => this.next());
@@ -243,6 +341,7 @@
     next() { const t = site.photos.total; this.current = this.current === t ? 1 : this.current + 1; this.render(); },
     prev() { const t = site.photos.total; this.current = this.current === 1 ? t : this.current - 1; this.render(); },
     render() {
+      if (this.source) this.source.srcset = photoSrcWebp(this.current);
       this.img.src = photoSrc(this.current);
       this.img.alt = (dict.gallery?.photoOf || 'Photo {n}').replace('{n}', this.current);
       this.count.textContent = `${this.current} / ${site.photos.total}`;
@@ -253,10 +352,32 @@
   // ---------- Wire up listing/contact links -----------------------------
   const wireLinks = () => {
     const tel = (site.contact?.phone || '').replace(/\s+/g, '');
+    const telDigits = tel.replace(/[^\d+]/g, '').replace(/^\+/, '');
     document.getElementById('airbnb-link').href = site.listings?.airbnb || '#';
     document.getElementById('booking-link').href = site.listings?.booking || '#';
     document.getElementById('call-link').href = tel ? `tel:${tel}` : '#';
     document.getElementById('sms-link').href = tel ? `sms:${tel}` : '#';
+
+    // Reviews → Airbnb link
+    const revLink = document.getElementById('reviews-airbnb-link');
+    if (revLink) revLink.href = site.listings?.airbnb || '#';
+
+    // WhatsApp (shown only if site.contact.whatsapp === true)
+    const waBtn = document.getElementById('whatsapp-link');
+    if (waBtn) {
+      if (site.contact?.whatsapp && telDigits) {
+        const waMsg = encodeURIComponent(
+          currentLang === 'en'
+            ? "Hello, I'd like to ask about Sceaux Serenity."
+            : 'Bonjour, je souhaite obtenir des informations sur Sceaux Sérénité.'
+        );
+        waBtn.href = `https://wa.me/${telDigits}?text=${waMsg}`;
+        waBtn.hidden = false;
+      } else {
+        waBtn.hidden = true;
+      }
+    }
+
     const subj = encodeURIComponent(
       currentLang === 'en'
         ? 'Sceaux Serenity — booking inquiry'
@@ -271,6 +392,31 @@
     const iframe = document.getElementById('map-iframe');
     if (m.bbox && m.marker) {
       iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${m.bbox}&layer=mapnik&marker=${m.marker}`;
+    }
+
+    // Rewrite OG / canonical / JSON-LD URLs from site.siteUrl
+    if (site.siteUrl) {
+      const base = site.siteUrl.replace(/\/$/, '');
+      const featured = Number(site.photos?.featured) || 1;
+      const imgUrl = `${base}/public/images/photo-${String(featured).padStart(2, '0')}.jpeg`;
+      const setMeta = (selector, attr, value) => {
+        const el = document.querySelector(selector);
+        if (el) el.setAttribute(attr, value);
+      };
+      setMeta('meta[property="og:url"]', 'content', `${base}/`);
+      setMeta('meta[property="og:image"]', 'content', imgUrl);
+      setMeta('meta[name="twitter:image"]', 'content', imgUrl);
+      setMeta('link[rel="canonical"]', 'href', `${base}/`);
+      // Update JSON-LD
+      const ld = document.getElementById('ld-json');
+      if (ld) {
+        try {
+          const data = JSON.parse(ld.textContent);
+          data.url = `${base}/`;
+          data.image = imgUrl;
+          ld.textContent = JSON.stringify(data, null, 2);
+        } catch (_) {}
+      }
     }
   };
 
@@ -323,7 +469,10 @@
     setTheme(savedTheme);
 
     try {
-      site = await loadJSON('content/site.json');
+      [site, reviews] = await Promise.all([
+        loadJSON('content/site.json'),
+        loadJSON('content/reviews.json').catch(() => ({ summary: {}, items: [] })),
+      ]);
     } catch (err) {
       console.error('Failed to load site.json', err);
       document.body.innerHTML = `<div style="padding:40px;font-family:sans-serif">

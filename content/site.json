@@ -1,19 +1,33 @@
 {
   "_comment": "Non-translatable site config. Edit phone/email/URLs here.",
+  "siteUrl": "https://sceauxserenite.example.com",
+  "_siteUrl_comment": "Public canonical URL of the deployed site. Used for og:image and JSON-LD. Update once you have a real domain.",
   "contact": {
     "phone": "+33600000000",
     "phoneDisplay": "+33 6 00 00 00 00",
-    "email": "contact@example.com"
+    "email": "contact@example.com",
+    "whatsapp": true
   },
   "listings": {
     "airbnb": "https://www.airbnb.fr/rooms/1021507317870791676",
     "booking": "https://www.booking.com/"
   },
   "photos": {
-    "_comment": "Photo configuration. 'featured' is the big highlighted photo in the gallery (1..total). 'hero' lists the 4 supporting photos shown next to it. To highlight a different photo, just change 'featured'.",
+    "_comment": "Photo configuration. 'featured' is the big highlighted photo in the gallery (1..total). 'hero' lists the 4 supporting photos shown next to it. 'categories' groups photos for the all-photos overlay tabs — adjust the numbers to match what's actually in each photo.",
     "total": 44,
-    "featured": 1,
-    "hero": [2, 3, 4, 5]
+    "featured": 21,
+    "hero": [2, 3, 4, 5],
+    "categories": {
+      "exterior":  { "fr": "Extérieur",     "en": "Exterior",     "items": [1, 2, 3, 4] },
+      "living":    { "fr": "Salon",         "en": "Living room",  "items": [5, 6, 7, 8, 9, 10] },
+      "kitchen":   { "fr": "Cuisine",       "en": "Kitchen",      "items": [11, 12, 13, 14] },
+      "dining":    { "fr": "Salle à manger","en": "Dining room",  "items": [15, 16, 17] },
+      "bedrooms":  { "fr": "Chambres",      "en": "Bedrooms",     "items": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27] },
+      "bathrooms": { "fr": "Salles de bain","en": "Bathrooms",    "items": [28, 29, 30, 31] },
+      "garden":    { "fr": "Jardin",        "en": "Garden",       "items": [32, 33, 34, 35, 36] },
+      "rooftop":   { "fr": "Terrasse",      "en": "Rooftop",      "items": [37, 38, 39, 40] },
+      "details":   { "fr": "Détails",       "en": "Details",      "items": [41, 42, 43, 44] }
+    }
   },
   "map": {
     "_comment": "OpenStreetMap embed bbox (west,south,east,north) and marker (lat,lon).",

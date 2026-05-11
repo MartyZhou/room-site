@@ -1,0 +1,5 @@
+- **Smoke** and **carbon monoxide detectors** installed
+- **Self check-in** with a secure lockbox
+- Stairs on the property — bedrooms are upstairs; a sleeping option is available in the living room
+- **High-speed Wi-Fi** and laundry included
+- **Free parking** directly in front of the house

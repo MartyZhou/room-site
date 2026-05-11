@@ -1,0 +1,6 @@
+- **Check-in** from 3:00 PM — self check-in with a secure lockbox
+- **Check-out** before 10:00 AM
+- Up to **11 guests**
+- **Pets** welcome on request
+- No parties or events
+- Long stays (28 days+) allowed
