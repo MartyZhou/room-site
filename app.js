@@ -3,6 +3,8 @@
 
   let site = null;
   let dict = null;
+  let prose = {};
+  const proseCache = {};
   let currentLang = 'fr';
 
   // ---------- Utilities --------------------------------------------------
@@ -13,6 +15,27 @@
     const res = await fetch(url, { cache: 'no-cache' });
     if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
     return res.json();
+  };
+  const loadText = async (url) => {
+    const res = await fetch(url, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
+    return res.text();
+  };
+
+  // Slugs map to content/prose/{lang}/{slug}.md
+  const PROSE_KEYS = ['about', 'access', 'location', 'book-intro', 'book-direct'];
+  const loadProse = async (lang) => {
+    if (proseCache[lang]) return proseCache[lang];
+    const entries = await Promise.all(PROSE_KEYS.map(async (key) => {
+      try {
+        return [key, await loadText(`content/prose/${lang}/${key}.md`)];
+      } catch (err) {
+        console.warn(`Missing prose file: ${key} (${lang})`, err);
+        return [key, ''];
+      }
+    }));
+    proseCache[lang] = Object.fromEntries(entries);
+    return proseCache[lang];
   };
 
   // ---------- Minimal markdown -> HTML ----------------------------------
@@ -63,10 +86,11 @@
       const v = resolve(el.getAttribute('data-bind'));
       if (typeof v === 'string') el.textContent = v;
     });
-    // data-bind-md: markdown binding; value may be a string or array of paragraphs
+    // data-bind-md: renders content/prose/{lang}/{slug}.md as HTML.
     document.querySelectorAll('[data-bind-md]').forEach((el) => {
-      const v = resolve(el.getAttribute('data-bind-md'));
-      if (v != null) el.innerHTML = renderMarkdown(v);
+      const slug = el.getAttribute('data-bind-md');
+      const md = prose[slug];
+      if (md != null) el.innerHTML = renderMarkdown(md);
     });
 
     // Quick facts
@@ -210,7 +234,10 @@
   const setLang = async (lang) => {
     if (!['fr', 'en'].includes(lang)) lang = 'fr';
     currentLang = lang;
-    dict = await loadJSON(`content/${lang}.json`);
+    [dict, prose] = await Promise.all([
+      loadJSON(`content/${lang}.json`),
+      loadProse(lang),
+    ]);
     applyContent();
     buildGallery();
     wireLinks();

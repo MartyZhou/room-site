@@ -32,13 +32,7 @@
   },
   "about": {
     "kicker": "Logement entier — villa hébergé par Edor",
-    "subkicker": "5 chambres · 6 lits · 2,5 salles de bain · jusqu'à 11 voyageurs",
-    "_comment_body": "Champ markdown. Tableau de paragraphes. Vous pouvez utiliser **gras**, *italique*, [liens](https://exemple.com), et listes (- élément).",
-    "body": [
-      "Bienvenue dans notre **magnifique villa de 5 chambres** — une retraite parfaite aux portes de Paris, alliant confort, style et praticité.",
-      "Détendez-vous dans des chambres lumineuses, profitez d'une cuisine entièrement équipée, et savourez un moment de calme dans le *jardin privé* ou sur la *terrasse sur le toit*.",
-      "Située à **Sceaux**, à deux pas des transports en commun, la maison vous permet de rejoindre rapidement le centre de Paris tout en profitant du calme et du charme de cette ville verdoyante. Idéale pour des vacances en famille, une escapade romantique ou un voyage professionnel."
-    ]
+    "subkicker": "5 chambres · 6 lits · 2,5 salles de bain · jusqu'à 11 voyageurs"
   },
   "features": [
     {
@@ -92,22 +86,18 @@
     ]
   },
   "access": {
-    "title": "Accès des voyageurs",
-    "body": "Vous aurez un accès exclusif et complet à toute la maison : les 5 chambres, les 2,5 salles de bain, la cuisine équipée, le salon et la salle à manger, le jardin privé et la terrasse sur le toit. Wi-Fi haut débit, buanderie, et arrivée autonome avec boîte à clé sécurisée."
+    "title": "Accès des voyageurs"
   },
   "loc": {
-    "title": "Où se situe le logement",
-    "body": "Sceaux, Île-de-France — une ville résidentielle verdoyante au sud de Paris. RER B et bus à moins de 5 minutes à pied permettent de rejoindre le centre de Paris en moins de 30 minutes. Parking gratuit directement devant la maison."
+    "title": "Où se situe le logement"
   },
   "book": {
     "title": "Réservez votre séjour",
-    "intro": "Réservez en toute confiance via nos plateformes partenaires, ou contactez-nous directement pour un séjour sur-mesure.",
     "airbnbCta": "Voir sur Airbnb",
     "airbnbSub": "Disponibilité en temps réel, paiement sécurisé",
     "bookingCta": "Voir sur Booking.com",
     "bookingSub": "Annulation flexible selon les dates",
     "directTitle": "Tarifs et disponibilités",
-    "directBody": "Appelez ou envoyez un SMS pour une réponse rapide. Nous parlons français et anglais.",
     "callBtn": "Appeler",
     "smsBtn": "Envoyer un SMS",
     "emailBtn": "Envoyer un email"

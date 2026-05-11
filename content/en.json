@@ -32,13 +32,7 @@
   },
   "about": {
     "kicker": "Entire villa hosted by Edor",
-    "subkicker": "5 bedrooms · 6 beds · 2.5 baths · up to 11 guests",
-    "_comment_body": "Markdown field. Array of paragraphs. Supports **bold**, *italic*, [links](https://example.com), and lists (- item).",
-    "body": [
-      "Welcome to our **beautiful 5-bedroom villa** — the perfect retreat at the gates of Paris, blending comfort, style and convenience.",
-      "Relax in bright bedrooms, enjoy a fully equipped kitchen, and unwind in the *private garden* or on the *rooftop terrace*.",
-      "Located in **Sceaux**, steps from public transport, the house lets you reach central Paris quickly while enjoying the calm and charm of this leafy town. Perfect for family holidays, romantic getaways or business trips."
-    ]
+    "subkicker": "5 bedrooms · 6 beds · 2.5 baths · up to 11 guests"
   },
   "features": [
     {
@@ -92,22 +86,18 @@
     ]
   },
   "access": {
-    "title": "Guest access",
-    "body": "You'll have exclusive, full access to the whole house: 5 bedrooms, 2.5 bathrooms, the equipped kitchen, living and dining room, private garden and rooftop terrace. High-speed Wi-Fi, laundry, and self check-in with a secure lockbox."
+    "title": "Guest access"
   },
   "loc": {
-    "title": "Where you'll be",
-    "body": "Sceaux, Île-de-France — a leafy residential town just south of Paris. RER B and buses are less than a 5-minute walk and reach central Paris in under 30 minutes. Free parking directly in front of the house."
+    "title": "Where you'll be"
   },
   "book": {
     "title": "Book your stay",
-    "intro": "Book with confidence on our partner platforms, or reach out directly for a tailored stay.",
     "airbnbCta": "View on Airbnb",
     "airbnbSub": "Real-time availability, secure payment",
     "bookingCta": "View on Booking.com",
     "bookingSub": "Flexible cancellation on select dates",
     "directTitle": "Pricing & availability",
-    "directBody": "Call or text for a quick reply. We speak French and English.",
     "callBtn": "Call",
     "smsBtn": "Send a text",
     "emailBtn": "Send an email"
