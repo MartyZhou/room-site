@@ -1,25 +1,103 @@
 {
-  "_comment": "Reviews shown on the page. Replace these examples with real quotes from your Airbnb listing. Each review is bilingual; if you only have one language, copy it to both keys (or just one).",
+  "_comment": "Reviews data. Aggregates and tags are pulled from the live Airbnb listing. Individual review TEXT (in 'items' below) is NOT public via Airbnb's API — open https://www.airbnb.fr/rooms/1021507317870791676/reviews on Airbnb, copy the most representative quotes, and paste them in. The example items below are placeholders.",
   "summary": {
     "rating": "4,94",
     "count": 35,
+    "guestFavorite": true,
     "categories": {
-      "cleanliness": { "fr": "Propreté", "en": "Cleanliness", "score": 5.0 },
-      "accuracy":    { "fr": "Précision", "en": "Accuracy", "score": 4.9 },
-      "checkin":     { "fr": "Arrivée", "en": "Check-in", "score": 5.0 },
-      "communication": { "fr": "Communication", "en": "Communication", "score": 5.0 },
-      "location":    { "fr": "Emplacement", "en": "Location", "score": 4.9 },
-      "value":       { "fr": "Rapport qualité-prix", "en": "Value", "score": 4.8 }
+      "cleanliness": {
+        "fr": "Propreté",
+        "en": "Cleanliness",
+        "score": 5.0
+      },
+      "accuracy": {
+        "fr": "Précision",
+        "en": "Accuracy",
+        "score": 4.9
+      },
+      "checkin": {
+        "fr": "Arrivée",
+        "en": "Check-in",
+        "score": 5.0
+      },
+      "communication": {
+        "fr": "Communication",
+        "en": "Communication",
+        "score": 5.0
+      },
+      "location": {
+        "fr": "Emplacement",
+        "en": "Location",
+        "score": 4.9
+      },
+      "value": {
+        "fr": "Qualité-prix",
+        "en": "Value",
+        "score": 4.9
+      }
     }
   },
+  "_tags_comment": "Top keywords reviewers mention, with how many reviews mention each. Ordered by count descending. Pulled live from Airbnb.",
+  "tags": [
+    {
+      "fr": "Hospitalité",
+      "en": "Hospitality",
+      "count": 28
+    },
+    {
+      "fr": "Emplacement",
+      "en": "Location",
+      "count": 16
+    },
+    {
+      "fr": "Se déplacer",
+      "en": "Getting around",
+      "count": 12
+    },
+    {
+      "fr": "À proximité",
+      "en": "Nearby",
+      "count": 10
+    },
+    {
+      "fr": "Propreté",
+      "en": "Cleanliness",
+      "count": 10
+    },
+    {
+      "fr": "Espaces intérieurs",
+      "en": "Indoor spaces",
+      "count": 8
+    },
+    {
+      "fr": "Famille",
+      "en": "Family",
+      "count": 8
+    },
+    {
+      "fr": "Précision",
+      "en": "Accuracy",
+      "count": 7
+    },
+    {
+      "fr": "Parcs",
+      "en": "Parks",
+      "count": 6
+    },
+    {
+      "fr": "Accessibilité à pied",
+      "en": "Walkability",
+      "count": 5
+    }
+  ],
   "items": [
     {
       "author": "Marie",
       "date": "2024-12",
       "rating": 5,
       "text": {
-        "fr": "Maison spacieuse et lumineuse, parfaite pour notre famille. L'accueil d'Edor était chaleureux et la localisation idéale pour visiter Paris.",
-        "en": "Spacious, bright house, perfect for our family. Edor was warm and welcoming and the location was ideal for visiting Paris."
+        "fr": "[Exemple] Maison spacieuse et lumineuse, parfaite pour notre famille. L'accueil d'Edor était chaleureux et la localisation idéale pour visiter Paris.",
+        "en": "[Sample] Spacious, bright house, perfect for our family. Edor was warm and welcoming and the location was ideal for visiting Paris."
       }
     },
     {
@@ -27,8 +105,8 @@
       "date": "2024-11",
       "rating": 5,
       "text": {
-        "fr": "Tout était impeccable. Le jardin est un vrai plus, et la terrasse sur le toit est magnifique. Nous reviendrons !",
-        "en": "Everything was spotless. The garden is a real plus and the rooftop terrace is beautiful. We'll be back!"
+        "fr": "[Exemple] Tout était impeccable. Le jardin est un vrai plus, et la terrasse sur le toit est magnifique. Nous reviendrons !",
+        "en": "[Sample] Everything was spotless. The garden is a real plus and the rooftop terrace is beautiful. We'll be back!"
       }
     },
     {
@@ -36,26 +114,8 @@
       "date": "2024-10",
       "rating": 5,
       "text": {
-        "fr": "Très belle maison, calme et confortable. Le RER B juste à côté permet de rejoindre Paris en 25 minutes.",
-        "en": "Lovely house, calm and comfortable. The RER B right nearby gets you into Paris in 25 minutes."
-      }
-    },
-    {
-      "author": "James",
-      "date": "2024-09",
-      "rating": 5,
-      "text": {
-        "fr": "Logement parfait pour un séjour en famille. Cuisine bien équipée, chambres confortables. Edor a été très réactif.",
-        "en": "Perfect place for a family stay. Well-equipped kitchen, comfortable bedrooms. Edor was very responsive."
-      }
-    },
-    {
-      "author": "Camille",
-      "date": "2024-08",
-      "rating": 5,
-      "text": {
-        "fr": "Maison charmante avec tout le confort. Le quartier de Sceaux est verdoyant et agréable. Très bon rapport qualité-prix.",
-        "en": "Charming house with all the comforts. The Sceaux neighborhood is leafy and pleasant. Great value."
+        "fr": "[Exemple] Très belle maison, calme et confortable. Le RER B juste à côté permet de rejoindre Paris en 25 minutes.",
+        "en": "[Sample] Lovely house, calm and comfortable. The RER B right nearby gets you into Paris in 25 minutes."
       }
     }
   ]

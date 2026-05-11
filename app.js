@@ -176,6 +176,7 @@
   // ---------- Reviews ----------------------------------------------------
   const renderReviews = () => {
     const summaryEl = document.getElementById('reviews-summary');
+    const tagsEl = document.getElementById('reviews-tags');
     const gridEl = document.getElementById('reviews-grid');
     if (!summaryEl || !gridEl || !reviews) return;
     const s = reviews.summary || {};
@@ -192,6 +193,9 @@
           <span class="rs-cat-score">${score.toFixed(2).replace('.', currentLang === 'fr' ? ',' : '.')}</span>
         </div>`;
     }).join('');
+    const favBadge = s.guestFavorite
+      ? `<span class="rs-fav" title="${dict.reviews?.guestFavorite || ''}">★ ${dict.reviews?.guestFavorite || 'Guest favorite'}</span>`
+      : '';
     summaryEl.innerHTML = `
       <div class="rs-overall">
         <div class="rs-big">
@@ -201,9 +205,32 @@
         <div class="rs-overall-text">
           <strong>${dict.reviews?.overall || 'Overall'}</strong>
           <span class="muted">${basedOn}</span>
+          ${favBadge}
         </div>
       </div>
       <div class="rs-cats">${catRows}</div>`;
+
+    // Tags ("guests often mention")
+    if (tagsEl) {
+      const tags = reviews.tags || [];
+      if (tags.length) {
+        const countTpl = dict.reviews?.tagsCount || '{n} reviews';
+        const tagsHtml = tags.map((t) => {
+          const c = countTpl.replace('{n}', t.count);
+          return `<li class="rs-tag"><span class="rs-tag-name"></span><span class="rs-tag-count muted small">${c}</span></li>`;
+        }).join('');
+        tagsEl.innerHTML = `
+          <h3 class="rs-tags-title">${dict.reviews?.tagsTitle || 'Guests often mention'}</h3>
+          <ul class="rs-tag-list">${tagsHtml}</ul>`;
+        // Set tag names safely (avoid HTML injection)
+        const nameEls = tagsEl.querySelectorAll('.rs-tag-name');
+        tags.forEach((t, i) => {
+          if (nameEls[i]) nameEls[i].textContent = t[currentLang] || t.fr || t.en || '';
+        });
+      } else {
+        tagsEl.innerHTML = '';
+      }
+    }
 
     gridEl.innerHTML = '';
     (reviews.items || []).forEach((r) => {

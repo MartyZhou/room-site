@@ -91,6 +91,9 @@
     "title": "Ce que disent nos voyageurs",
     "overall": "Note globale",
     "basedOn": "sur {n} commentaires",
+    "guestFavorite": "Coup de cœur voyageurs",
+    "tagsTitle": "Les voyageurs mentionnent souvent",
+    "tagsCount": "{n} commentaires",
     "showAll": "Voir tous les avis sur Airbnb"
   },
   "rules": {

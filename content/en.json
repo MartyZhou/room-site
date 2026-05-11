@@ -91,6 +91,9 @@
     "title": "What our guests say",
     "overall": "Overall rating",
     "basedOn": "based on {n} reviews",
+    "guestFavorite": "Guest favorite",
+    "tagsTitle": "Guests often mention",
+    "tagsCount": "{n} reviews",
     "showAll": "See all reviews on Airbnb"
   },
   "rules": {

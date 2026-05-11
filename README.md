@@ -30,6 +30,26 @@ cd public/images
 for f in photo-*.jpeg; do cwebp -q 82 -quiet "$f" -o "${f%.jpeg}.webp" & done; wait
 ```
 
+## Refreshing review aggregates from Airbnb
+
+```sh
+python3 scripts/update_from_airbnb.py             # update reviews.json aggregates + tags
+python3 scripts/update_from_airbnb.py --photos    # also re-download photos and regenerate .webp
+python3 scripts/update_from_airbnb.py --dry-run   # show what would change without writing
+```
+
+What it does:
+
+- Re-fetches the public Airbnb listing page (URL parsed from
+  `content/site.json:listings.airbnb`).
+- Extracts review aggregates (overall rating, count, guest-favorite flag,
+  six per-category scores) and the top-mention tags from the SSR'd JSON.
+- Merges them into `content/reviews.json` while preserving your `items[]`
+  (Airbnb doesn't expose individual review text via public endpoints —
+  paste real quotes from your host dashboard there yourself).
+
+Re-run whenever you get new reviews or want fresh tag counts.
+
 ## Before going live
 
 1. **Fill in real contact info** in `content/site.json` (`contact.phone`,
