@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sceaux Sérénité — Superbe villa proche de Paris</title>
+  <meta name="description" content="Villa 5 chambres à Sceaux, aux portes de Paris." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23517a5a' d='M16 3 3 14h3v15h7v-9h6v9h7V14h3z'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3 3 14h3v15h7v-9h6v9h7V14h3z"/></svg>
+        <span data-bind="brand">Sceaux Sérénité</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#about" data-bind="nav.about">Le logement</a>
+        <a href="#photos" data-bind="nav.photos">Photos</a>
+        <a href="#amenities" data-bind="nav.amenities">Équipements</a>
+        <a href="#location" data-bind="nav.location">Localisation</a>
+        <a href="#book" class="cta-link" data-bind="nav.contact">Réserver</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="fr" class="active" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-text">
+        <h1 data-bind="hero.title">Sceaux Sérénité — Superbe maison proche de Paris</h1>
+        <p class="hero-sub">
+          <span class="rating">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01z"/></svg>
+            <span data-bind="hero.rating">4,94</span>
+          </span>
+          <span class="reviews" data-bind="hero.reviews">35 commentaires</span>
+          <span class="dot">·</span>
+          <span data-bind="hero.host">Hôte : Edor</span>
+          <span class="dot">·</span>
+          <span data-bind="hero.location">Sceaux, Île-de-France, France</span>
+        </p>
+        <ul class="quick-facts" id="quick-facts"></ul>
+      </div>
+    </section>
+
+    <section id="photos" class="gallery-section">
+      <div class="container">
+        <div class="gallery-grid" id="gallery"></div>
+        <button type="button" class="show-all" id="show-all" data-bind="gallery.showAll">Afficher toutes les photos</button>
+      </div>
+    </section>
+
+    <section id="about" class="about container">
+      <header class="section-head">
+        <h2 data-bind="about.kicker">Logement entier — villa hébergé par Edor</h2>
+        <p class="muted" data-bind="about.subkicker">5 chambres · 6 lits · 2,5 salles de bain · jusqu'à 11 voyageurs</p>
+      </header>
+
+      <div class="feature-row" id="feature-row"></div>
+
+      <div class="about-text" data-bind-md="about.body"></div>
+
+      <h2 class="section-h" data-bind="rooms.title">Où vous dormirez</h2>
+      <div class="rooms" id="rooms"></div>
+
+      <h2 id="amenities" class="section-h" data-bind="amenities.title">Ce que ce logement offre</h2>
+      <ul class="amenities-grid" id="amenities-list"></ul>
+
+      <h2 class="section-h" data-bind="access.title">Accès des voyageurs</h2>
+      <div class="prose" data-bind-md="access.body"></div>
+
+      <h2 id="location" class="section-h" data-bind="loc.title">Où se situe le logement</h2>
+      <div class="prose" data-bind-md="loc.body"></div>
+      <div class="map-embed">
+        <iframe id="map-iframe" title="Sceaux" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+    <section id="book" class="book-section">
+      <div class="container">
+        <header class="section-head center">
+          <h2 data-bind="book.title">Réservez votre séjour</h2>
+          <div class="muted prose" data-bind-md="book.intro"></div>
+        </header>
+
+        <div class="platforms">
+          <a class="platform airbnb" id="airbnb-link" target="_blank" rel="noopener noreferrer">
+            <div class="platform-logo">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 1c2.8 0 5 2.2 5 5 0 1-.3 2-.8 3l-.2.4L23.7 16c2.4 4 4.3 7.4 4.3 10 0 3-2.2 5-5 5-2 0-3.6-1-5.6-3.4l-.2-.2c-.5-.6-.7-.8-1.2-.8s-.7.2-1.2.8l-.2.2C12.6 30 11 31 9 31c-2.8 0-5-2-5-5 0-2.6 1.9-6 4.3-10l3.7-6.6-.2-.4c-.5-1-.8-2-.8-3 0-2.8 2.2-5 5-5zm0 13.3-3.6 6.3C10.5 23.9 9 26.8 9 28.5c0 1.3.8 2 2 2 1 0 2-.6 3.4-2.4l.4-.4c.5-.6.9-.9 1.2-1l.2-.1.2.1c.3.1.7.4 1.2 1l.4.4C19.4 29.9 20.4 30.5 21 30.5c1.2 0 2-.7 2-2 0-1.7-1.5-4.6-3.4-7.9zm0-11.3c-1.7 0-3 1.3-3 3 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.7-1.3-3-3-3z"/></svg>
+            </div>
+            <div class="platform-text">
+              <div class="platform-cta" data-bind="book.airbnbCta">Voir sur Airbnb</div>
+              <div class="platform-sub" data-bind="book.airbnbSub">Disponibilité en temps réel, paiement sécurisé</div>
+            </div>
+            <svg class="platform-arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="platform booking" id="booking-link" target="_blank" rel="noopener noreferrer">
+            <div class="platform-logo">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M4 4h11.5c4.2 0 7 2 7 5.5 0 2.2-1.2 3.7-3 4.6 2.5.8 4 2.8 4 5.6 0 4-3.2 6.3-8 6.3H4V4zm6 9h4.5c2 0 3.2-1 3.2-2.6S16.4 8 14.4 8H10v5zm0 9.5h5.6c2.5 0 3.9-1.1 3.9-3s-1.4-3-3.9-3H10v6z"/></svg>
+            </div>
+            <div class="platform-text">
+              <div class="platform-cta" data-bind="book.bookingCta">Voir sur Booking.com</div>
+              <div class="platform-sub" data-bind="book.bookingSub">Annulation flexible selon les dates</div>
+            </div>
+            <svg class="platform-arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="direct-contact">
+          <h3 data-bind="book.directTitle">Tarifs et disponibilités</h3>
+          <div class="muted prose" data-bind-md="book.directBody"></div>
+          <div class="direct-buttons">
+            <a class="direct-btn call" id="call-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+              <span>
+                <span class="direct-btn-label" data-bind="book.callBtn">Appeler</span>
+                <span class="direct-btn-num" data-bind="contact.phoneDisplay"></span>
+              </span>
+            </a>
+            <a class="direct-btn sms" id="sms-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>
+                <span class="direct-btn-label" data-bind="book.smsBtn">Envoyer un SMS</span>
+                <span class="direct-btn-num" data-bind="contact.phoneDisplay"></span>
+              </span>
+            </a>
+            <a class="direct-btn email" id="email-link">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm0 0 8 7 8-7"/></svg>
+              <span>
+                <span class="direct-btn-label" data-bind="book.emailBtn">Envoyer un email</span>
+                <span class="direct-btn-num" data-bind="contact.email"></span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-bind="brand">Sceaux Sérénité</span> · Sceaux, France</p>
+      <p class="muted small" data-bind="footer.note">Site indépendant — non affilié à Airbnb ou Booking.com.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+    <button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button>
+    <button type="button" class="lb-prev" id="lb-prev" aria-label="Previous">‹</button>
+    <img id="lb-img" alt="" />
+    <button type="button" class="lb-next" id="lb-next" aria-label="Next">›</button>
+    <div class="lb-count" id="lb-count"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

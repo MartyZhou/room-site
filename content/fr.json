@@ -1,0 +1,128 @@
+{
+  "_comment": "French content. Edit any text here and refresh the page to see changes.",
+  "lang": "fr",
+  "brand": "Sceaux Sérénité",
+  "meta": {
+    "title": "Sceaux Sérénité — Superbe villa proche de Paris",
+    "description": "Villa 5 chambres à Sceaux, aux portes de Paris. Jardin privé, terrasse sur le toit, jusqu'à 11 voyageurs."
+  },
+  "nav": {
+    "about": "Le logement",
+    "photos": "Photos",
+    "amenities": "Équipements",
+    "location": "Localisation",
+    "contact": "Réserver"
+  },
+  "hero": {
+    "title": "Sceaux Sérénité — Superbe maison proche de Paris",
+    "rating": "4,94",
+    "reviews": "35 commentaires",
+    "host": "Hôte : Edor",
+    "location": "Sceaux, Île-de-France, France"
+  },
+  "facts": {
+    "guests": { "value": "11", "label": "voyageurs" },
+    "bedrooms": { "value": "5", "label": "chambres" },
+    "beds": { "value": "6", "label": "lits" },
+    "baths": { "value": "2,5", "label": "salles de bain" }
+  },
+  "gallery": {
+    "showAll": "Afficher toutes les photos",
+    "photoOf": "Photo {n} de la maison"
+  },
+  "about": {
+    "kicker": "Logement entier — villa hébergé par Edor",
+    "subkicker": "5 chambres · 6 lits · 2,5 salles de bain · jusqu'à 11 voyageurs",
+    "_comment_body": "Champ markdown. Tableau de paragraphes. Vous pouvez utiliser **gras**, *italique*, [liens](https://exemple.com), et listes (- élément).",
+    "body": [
+      "Bienvenue dans notre **magnifique villa de 5 chambres** — une retraite parfaite aux portes de Paris, alliant confort, style et praticité.",
+      "Détendez-vous dans des chambres lumineuses, profitez d'une cuisine entièrement équipée, et savourez un moment de calme dans le *jardin privé* ou sur la *terrasse sur le toit*.",
+      "Située à **Sceaux**, à deux pas des transports en commun, la maison vous permet de rejoindre rapidement le centre de Paris tout en profitant du calme et du charme de cette ville verdoyante. Idéale pour des vacances en famille, une escapade romantique ou un voyage professionnel."
+    ]
+  },
+  "features": [
+    {
+      "title": "Confort et espace",
+      "body": "Lits king et queen size répartis dans cinq chambres chaleureuses, avec 2,5 salles de bain modernes à votre disposition."
+    },
+    {
+      "title": "Cuisine gourmande",
+      "body": "Entièrement équipée pour préparer vos repas — idéale pour des dîners en famille ou des soirées entre amis."
+    },
+    {
+      "title": "Jardin et terrasse sur le toit",
+      "body": "Un jardin privé pour se détendre et une terrasse sur le toit pour un café au soleil ou un apéritif en soirée."
+    },
+    {
+      "title": "Paris en quelques minutes",
+      "body": "RER et bus à moins de 5 minutes à pied, parking gratuit devant la maison. Le centre de Paris est à portée de main."
+    }
+  ],
+  "rooms": {
+    "title": "Où vous dormirez",
+    "items": [
+      { "title": "Chambre 1", "body": "1 lit king size" },
+      { "title": "Chambre 2", "body": "1 lit queen size, 1 lit simple" },
+      { "title": "Chambre 3", "body": "1 lit king size" },
+      { "title": "Chambre 4", "body": "1 lit queen size" },
+      { "title": "Chambre 5", "body": "1 canapé convertible" }
+    ]
+  },
+  "amenities": {
+    "title": "Ce que ce logement offre",
+    "items": [
+      "Cuisine entièrement équipée",
+      "Wifi haut débit",
+      "Espace de travail dédié",
+      "Stationnement gratuit sur place",
+      "Animaux acceptés",
+      "Baignoire",
+      "Sèche-cheveux",
+      "Lave-linge",
+      "Lave-vaisselle",
+      "Chauffage",
+      "Climatiseur portable",
+      "Télévision",
+      "Fer à repasser",
+      "Machine à café",
+      "Arrivée autonome",
+      "Mobilier extérieur, terrasse",
+      "Berceau pour bébé",
+      "Piano"
+    ]
+  },
+  "access": {
+    "title": "Accès des voyageurs",
+    "body": "Vous aurez un accès exclusif et complet à toute la maison : les 5 chambres, les 2,5 salles de bain, la cuisine équipée, le salon et la salle à manger, le jardin privé et la terrasse sur le toit. Wi-Fi haut débit, buanderie, et arrivée autonome avec boîte à clé sécurisée."
+  },
+  "loc": {
+    "title": "Où se situe le logement",
+    "body": "Sceaux, Île-de-France — une ville résidentielle verdoyante au sud de Paris. RER B et bus à moins de 5 minutes à pied permettent de rejoindre le centre de Paris en moins de 30 minutes. Parking gratuit directement devant la maison."
+  },
+  "book": {
+    "title": "Réservez votre séjour",
+    "intro": "Réservez en toute confiance via nos plateformes partenaires, ou contactez-nous directement pour un séjour sur-mesure.",
+    "airbnbCta": "Voir sur Airbnb",
+    "airbnbSub": "Disponibilité en temps réel, paiement sécurisé",
+    "bookingCta": "Voir sur Booking.com",
+    "bookingSub": "Annulation flexible selon les dates",
+    "directTitle": "Tarifs et disponibilités",
+    "directBody": "Appelez ou envoyez un SMS pour une réponse rapide. Nous parlons français et anglais.",
+    "callBtn": "Appeler",
+    "smsBtn": "Envoyer un SMS",
+    "emailBtn": "Envoyer un email"
+  },
+  "contact": {
+    "title": "Une question ? Nous sommes à votre écoute.",
+    "body": "Pour toute demande spéciale, séjour long, ou information sur la maison, écrivez-nous directement.",
+    "cta": "Nous contacter par email"
+  },
+  "footer": {
+    "note": "Site indépendant — non affilié à Airbnb ou Booking.com."
+  },
+  "lightbox": {
+    "close": "Fermer",
+    "prev": "Précédent",
+    "next": "Suivant"
+  }
+}

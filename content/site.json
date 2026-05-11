@@ -1,0 +1,41 @@
+{
+  "_comment": "Non-translatable site config. Edit phone/email/URLs here.",
+  "contact": {
+    "phone": "+33600000000",
+    "phoneDisplay": "+33 6 00 00 00 00",
+    "email": "contact@example.com"
+  },
+  "listings": {
+    "airbnb": "https://www.airbnb.fr/rooms/1021507317870791676",
+    "booking": "https://www.booking.com/"
+  },
+  "photos": {
+    "total": 44,
+    "hero": [1, 2, 3, 4, 5]
+  },
+  "map": {
+    "_comment": "OpenStreetMap embed bbox (west,south,east,north) and marker (lat,lon).",
+    "bbox": "2.275,48.770,2.325,48.795",
+    "marker": "48.7800,2.2900"
+  },
+  "amenityIcons": [
+    "M4 10h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM8 6V4m4 2V4m4 2V4",
+    "M5 12.55a11 11 0 0 1 14 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01",
+    "M4 4h16v12H4zM2 20h20M8 20v-4m8 4v-4",
+    "M5 21V3h7a5 5 0 0 1 0 10H9v8M9 6h3a2 2 0 0 1 0 4H9",
+    "M5 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm14 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-3 12c4 0 6-3 6-6s-2-5-6-5-6 2-6 5 2 6 6 6z",
+    "M2 12h20v5a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3zM6 12V5a2 2 0 0 1 2-2h2v3M5 20v2m14-2v2",
+    "M3 8a5 5 0 0 1 5-5h6a4 4 0 0 1 0 8H8a5 5 0 0 1-5-3zM10 11v10",
+    "M4 3h16v18H4zM4 8h16M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+    "M4 3h16v18H4zM4 8h16M8 12h8M8 16h8",
+    "M7 21V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v13M12 3v3M9 14h6M9 18h6",
+    "M2 12h20M6 6l12 12M6 18 18 6M12 2v20",
+    "M3 5h18v12H3zM8 21h8M12 17v4",
+    "M3 16h18l-2-6a4 4 0 0 0-4-3H8a4 4 0 0 0-4 3zM3 16v3h18v-3",
+    "M3 8h14v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM17 10h2a3 3 0 0 1 0 6h-2M7 2v3M11 2v3M15 2v3",
+    "M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM12 15v6M9 18h6M19 6l-7 7M14 4h5v5",
+    "M3 11h18M5 11v8m14-8v8M3 11 12 4l9 7",
+    "M3 7v12h18V7M3 9h18M7 7V5h10v2M7 11v6M11 11v6M15 11v6",
+    "M3 6h18v12H3zM7 6v8m4-8v8m4-8v8"
+  ]
+}

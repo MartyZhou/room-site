@@ -1,0 +1,128 @@
+{
+  "_comment": "English content. Edit any text here and refresh the page to see changes.",
+  "lang": "en",
+  "brand": "Sceaux Serenity",
+  "meta": {
+    "title": "Sceaux Serenity — Beautiful villa near Paris",
+    "description": "5-bedroom villa in Sceaux, at the gates of Paris. Private garden, rooftop terrace, up to 11 guests."
+  },
+  "nav": {
+    "about": "The home",
+    "photos": "Photos",
+    "amenities": "Amenities",
+    "location": "Location",
+    "contact": "Book"
+  },
+  "hero": {
+    "title": "Sceaux Serenity — Beautiful home near Paris",
+    "rating": "4.94",
+    "reviews": "35 reviews",
+    "host": "Hosted by Edor",
+    "location": "Sceaux, Île-de-France, France"
+  },
+  "facts": {
+    "guests": { "value": "11", "label": "guests" },
+    "bedrooms": { "value": "5", "label": "bedrooms" },
+    "beds": { "value": "6", "label": "beds" },
+    "baths": { "value": "2.5", "label": "bathrooms" }
+  },
+  "gallery": {
+    "showAll": "Show all photos",
+    "photoOf": "Photo {n} of the home"
+  },
+  "about": {
+    "kicker": "Entire villa hosted by Edor",
+    "subkicker": "5 bedrooms · 6 beds · 2.5 baths · up to 11 guests",
+    "_comment_body": "Markdown field. Array of paragraphs. Supports **bold**, *italic*, [links](https://example.com), and lists (- item).",
+    "body": [
+      "Welcome to our **beautiful 5-bedroom villa** — the perfect retreat at the gates of Paris, blending comfort, style and convenience.",
+      "Relax in bright bedrooms, enjoy a fully equipped kitchen, and unwind in the *private garden* or on the *rooftop terrace*.",
+      "Located in **Sceaux**, steps from public transport, the house lets you reach central Paris quickly while enjoying the calm and charm of this leafy town. Perfect for family holidays, romantic getaways or business trips."
+    ]
+  },
+  "features": [
+    {
+      "title": "Comfort & space",
+      "body": "King and queen-size beds across five welcoming bedrooms, with 2.5 modern bathrooms at your disposal."
+    },
+    {
+      "title": "Fully equipped kitchen",
+      "body": "Everything you need to cook — ideal for family meals or evenings with friends."
+    },
+    {
+      "title": "Garden & rooftop terrace",
+      "body": "A private garden to unwind and a rooftop terrace for a sunny coffee or an evening aperitif."
+    },
+    {
+      "title": "Paris in minutes",
+      "body": "RER and bus less than a 5-minute walk away, free parking in front of the house. Central Paris is right there."
+    }
+  ],
+  "rooms": {
+    "title": "Where you'll sleep",
+    "items": [
+      { "title": "Bedroom 1", "body": "1 king bed" },
+      { "title": "Bedroom 2", "body": "1 queen bed, 1 single bed" },
+      { "title": "Bedroom 3", "body": "1 king bed" },
+      { "title": "Bedroom 4", "body": "1 queen bed" },
+      { "title": "Bedroom 5", "body": "1 sofa bed" }
+    ]
+  },
+  "amenities": {
+    "title": "What this place offers",
+    "items": [
+      "Fully equipped kitchen",
+      "High-speed Wi-Fi",
+      "Dedicated workspace",
+      "Free parking on premises",
+      "Pets allowed",
+      "Bathtub",
+      "Hair dryer",
+      "Washer",
+      "Dishwasher",
+      "Heating",
+      "Portable AC",
+      "TV",
+      "Iron",
+      "Coffee maker",
+      "Self check-in",
+      "Outdoor furniture, terrace",
+      "Baby crib",
+      "Piano"
+    ]
+  },
+  "access": {
+    "title": "Guest access",
+    "body": "You'll have exclusive, full access to the whole house: 5 bedrooms, 2.5 bathrooms, the equipped kitchen, living and dining room, private garden and rooftop terrace. High-speed Wi-Fi, laundry, and self check-in with a secure lockbox."
+  },
+  "loc": {
+    "title": "Where you'll be",
+    "body": "Sceaux, Île-de-France — a leafy residential town just south of Paris. RER B and buses are less than a 5-minute walk and reach central Paris in under 30 minutes. Free parking directly in front of the house."
+  },
+  "book": {
+    "title": "Book your stay",
+    "intro": "Book with confidence on our partner platforms, or reach out directly for a tailored stay.",
+    "airbnbCta": "View on Airbnb",
+    "airbnbSub": "Real-time availability, secure payment",
+    "bookingCta": "View on Booking.com",
+    "bookingSub": "Flexible cancellation on select dates",
+    "directTitle": "Pricing & availability",
+    "directBody": "Call or text for a quick reply. We speak French and English.",
+    "callBtn": "Call",
+    "smsBtn": "Send a text",
+    "emailBtn": "Send an email"
+  },
+  "contact": {
+    "title": "Have a question? We're here to help.",
+    "body": "For any special request, long stay, or information about the house, write to us directly.",
+    "cta": "Email us"
+  },
+  "footer": {
+    "note": "Independent site — not affiliated with Airbnb or Booking.com."
+  },
+  "lightbox": {
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next"
+  }
+}
