@@ -244,6 +244,20 @@
     try { localStorage.setItem('lang', lang); } catch (_) {}
   };
 
+  // ---------- Theme switch ----------------------------------------------
+  const THEMES = ['serenity', 'classique', 'azur', 'nuit'];
+  const setTheme = (theme) => {
+    if (!THEMES.includes(theme)) theme = 'serenity';
+    if (theme === 'serenity') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-picker button').forEach((b) => {
+      const on = b.dataset.theme === theme;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    try { localStorage.setItem('theme', theme); } catch (_) {}
+  };
+
   // ---------- Boot -------------------------------------------------------
   const init = async () => {
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -252,6 +266,16 @@
     document.querySelectorAll('.lang-switch button').forEach((btn) => {
       btn.addEventListener('click', () => setLang(btn.dataset.lang));
     });
+    document.querySelectorAll('.theme-picker button').forEach((btn) => {
+      btn.addEventListener('click', () => setTheme(btn.dataset.theme));
+    });
+
+    let savedTheme = 'serenity';
+    try {
+      const t = localStorage.getItem('theme');
+      if (t && THEMES.includes(t)) savedTheme = t;
+    } catch (_) {}
+    setTheme(savedTheme);
 
     try {
       site = await loadJSON('content/site.json');
