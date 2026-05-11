@@ -10,8 +10,10 @@
     "booking": "https://www.booking.com/"
   },
   "photos": {
+    "_comment": "Photo configuration. 'featured' is the big highlighted photo in the gallery (1..total). 'hero' lists the 4 supporting photos shown next to it. To highlight a different photo, just change 'featured'.",
     "total": 44,
-    "hero": [1, 2, 3, 4, 5]
+    "featured": 1,
+    "hero": [2, 3, 4, 5]
   },
   "map": {
     "_comment": "OpenStreetMap embed bbox (west,south,east,north) and marker (lat,lon).",

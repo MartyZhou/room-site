@@ -28,6 +28,7 @@
   },
   "gallery": {
     "showAll": "Afficher toutes les photos",
+    "allTitle": "Toutes les photos",
     "photoOf": "Photo {n} de la maison"
   },
   "about": {

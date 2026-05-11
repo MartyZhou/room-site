@@ -162,11 +162,15 @@
   };
 
   // ---------- Gallery ----------------------------------------------------
+  const galleryPhotos = () => {
+    const featured = Number(site.photos?.featured) || 1;
+    const support = (site.photos?.hero || [2, 3, 4, 5]).filter((n) => n !== featured);
+    return [featured, ...support].slice(0, 5);
+  };
   const buildGallery = () => {
     const galleryEl = document.getElementById('gallery');
     galleryEl.innerHTML = '';
-    const hero = site.photos?.hero || [1, 2, 3, 4, 5];
-    hero.forEach((n) => {
+    galleryPhotos().forEach((n) => {
       const div = document.createElement('div');
       div.className = 'photo';
       const alt = (dict.gallery?.photoOf || 'Photo {n}').replace('{n}', n);
@@ -174,6 +178,46 @@
       div.addEventListener('click', () => openLightbox(n));
       galleryEl.appendChild(div);
     });
+  };
+
+  // ---------- All-photos overlay ----------------------------------------
+  const overlay = {
+    el: null, grid: null,
+    init() {
+      this.el = document.getElementById('photo-overlay');
+      this.grid = document.getElementById('po-grid');
+      document.getElementById('po-close').addEventListener('click', () => this.close());
+      document.getElementById('show-all').addEventListener('click', () => this.open());
+      document.addEventListener('keydown', (e) => {
+        if (!this.el.hidden && lb.el.hidden && e.key === 'Escape') this.close();
+      });
+    },
+    open() {
+      this.render();
+      this.el.hidden = false;
+      this.el.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    },
+    close() {
+      this.el.hidden = true;
+      document.body.style.overflow = '';
+    },
+    render() {
+      const total = site.photos?.total || 1;
+      const featured = Number(site.photos?.featured) || 1;
+      const altTpl = dict.gallery?.photoOf || 'Photo {n}';
+      this.grid.innerHTML = '';
+      for (let i = 1; i <= total; i++) {
+        const div = document.createElement('div');
+        div.className = 'po-photo' + (i === featured ? ' featured' : '');
+        const alt = altTpl.replace('{n}', i);
+        div.innerHTML = `
+          <img src="${photoSrc(i)}" alt="${alt}" loading="lazy" />
+          <span class="po-photo-num">${i} / ${total}</span>`;
+        div.addEventListener('click', () => openLightbox(i));
+        this.grid.appendChild(div);
+      }
+    },
   };
 
   // ---------- Lightbox ---------------------------------------------------
@@ -262,6 +306,7 @@
   const init = async () => {
     document.getElementById('year').textContent = new Date().getFullYear();
     lb.init();
+    overlay.init();
 
     document.querySelectorAll('.lang-switch button').forEach((btn) => {
       btn.addEventListener('click', () => setLang(btn.dataset.lang));

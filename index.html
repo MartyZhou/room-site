@@ -158,6 +158,16 @@
     </div>
   </footer>
 
+  <div class="photo-overlay" id="photo-overlay" hidden role="dialog" aria-modal="true">
+    <header class="po-header">
+      <button type="button" class="po-close" id="po-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <h2 class="po-title" data-bind="gallery.allTitle">Toutes les photos</h2>
+    </header>
+    <div class="po-grid" id="po-grid"></div>
+  </div>
+
   <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
     <button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button>
     <button type="button" class="lb-prev" id="lb-prev" aria-label="Previous">‹</button>
