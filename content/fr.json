@@ -107,7 +107,8 @@
     "title": "Accès des voyageurs"
   },
   "loc": {
-    "title": "Où se situe le logement"
+    "title": "Où se situe le logement",
+    "mapLink": "Ouvrir dans Google Maps"
   },
   "book": {
     "title": "Réservez votre séjour",

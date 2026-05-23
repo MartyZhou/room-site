@@ -425,11 +425,26 @@
       ? `mailto:${site.contact.email}?subject=${subj}`
       : '#';
 
-    // Map iframe
+    // Map iframe — prefer the Google Business place, fall back to OSM
     const m = site.map || {};
     const iframe = document.getElementById('map-iframe');
-    if (m.bbox && m.marker) {
+    if (m.googleQuery) {
+      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}&z=${m.zoom || 15}&output=embed`;
+    } else if (m.bbox && m.marker) {
       iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${m.bbox}&layer=mapnik&marker=${m.marker}`;
+    }
+
+    // "Open in Google Maps" link under the map
+    const mapLink = document.getElementById('map-link');
+    if (mapLink) {
+      const href = site.listings?.google
+        || (m.googleQuery ? `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}` : null);
+      if (href) {
+        mapLink.href = href;
+        mapLink.hidden = false;
+      } else {
+        mapLink.hidden = true;
+      }
     }
 
     // Rewrite OG / canonical / JSON-LD URLs from site.siteUrl

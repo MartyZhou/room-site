@@ -107,7 +107,8 @@
     "title": "Guest access"
   },
   "loc": {
-    "title": "Where you'll be"
+    "title": "Where you'll be",
+    "mapLink": "Open in Google Maps"
   },
   "book": {
     "title": "Book your stay",

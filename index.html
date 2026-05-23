@@ -141,8 +141,11 @@
       <h2 id="location" class="section-h" data-bind="loc.title">Où se situe le logement</h2>
       <div class="prose" data-bind-md="location"></div>
       <div class="map-embed">
-        <iframe id="map-iframe" title="Sceaux" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe id="map-iframe" title="Sceaux Sérénité" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+      <p style="margin-top: 12px">
+        <a class="text-link" id="map-link" target="_blank" rel="noopener noreferrer" hidden data-bind="loc.mapLink">Ouvrir dans Google Maps</a>
+      </p>
 
       <h2 id="rules" class="section-h" data-bind="rules.title">À savoir avant de venir</h2>
       <div class="rules-grid">
