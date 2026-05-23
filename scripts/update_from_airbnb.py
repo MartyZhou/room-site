@@ -319,6 +319,13 @@ def main() -> None:
         print()
         _sync_photos(html)
 
+    # Keep the double-click bundle in sync with the content we just changed.
+    if not args.dry_run:
+        build_script = REPO / "scripts" / "build_bundle.py"
+        if build_script.exists():
+            print()
+            subprocess.run([sys.executable, str(build_script)], check=False)
+
 
 if __name__ == "__main__":
     main()

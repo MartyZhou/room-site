@@ -3,15 +3,36 @@
 Standalone, bilingual (FR/EN) listing page for a 5-bedroom villa in Sceaux,
 just south of Paris. Plain HTML/CSS/JS — no build step.
 
-## Local preview
+## Just want to look at it? Double-click `index.html`
+
+Open `index.html` in any web browser (double-click it). That's it — no
+installation, no terminal. The page reads its text from a pre-built bundle
+(`content/bundle.js`) so it works straight from the folder.
+
+To put it on the internet so others can visit, drag the whole folder onto
+**https://app.netlify.com/drop** — you'll get a public link in about a
+minute. (Re-drag the folder to publish updates.)
+
+## Editing the text (optional, slightly technical)
+
+The wording, photos, reviews, etc. live in the `content/` folder (see the
+table below). After editing anything there, regenerate the bundle so the
+double-click preview reflects your change:
+
+```sh
+python3 scripts/build_bundle.py
+```
+
+## Live preview while editing (developers)
 
 ```sh
 python3 -m http.server 4321
 # then open http://localhost:4321/
 ```
 
-The site must be served over HTTP (the JS uses `fetch()` to load JSON and
-markdown files). Opening `index.html` directly via `file://` will not work.
+Served over HTTP, the page fetches `content/*` live, so edits show on
+refresh without rebuilding the bundle. (The bundle is only used as a
+fallback when the page is opened directly via `file://`.)
 
 ## Editing content
 
