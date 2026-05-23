@@ -425,11 +425,16 @@
       ? `mailto:${site.contact.email}?subject=${subj}`
       : '#';
 
-    // Map iframe — prefer the Google Business place, fall back to OSM
+    // Map iframe — center on exact coords, else Google name search, else OSM
     const m = site.map || {};
     const iframe = document.getElementById('map-iframe');
-    if (m.googleQuery) {
-      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}&z=${m.zoom || 15}&output=embed`;
+    const zoom = m.zoom || 16;
+    if (m.center) {
+      // q=lat,lng(Label) drops a labeled pin and centers the view on it
+      const label = m.label ? ` (${m.label})` : '';
+      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.center + label)}&z=${zoom}&output=embed`;
+    } else if (m.googleQuery) {
+      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}&z=${zoom}&output=embed`;
     } else if (m.bbox && m.marker) {
       iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${m.bbox}&layer=mapnik&marker=${m.marker}`;
     }
@@ -438,6 +443,7 @@
     const mapLink = document.getElementById('map-link');
     if (mapLink) {
       const href = site.listings?.google
+        || (m.center ? `https://maps.google.com/maps?q=${encodeURIComponent(m.center)}&z=${zoom}` : null)
         || (m.googleQuery ? `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}` : null);
       if (href) {
         mapLink.href = href;

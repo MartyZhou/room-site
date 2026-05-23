@@ -31,9 +31,11 @@
     }
   },
   "map": {
-    "_comment": "If 'googleQuery' is set, the map shows that place on Google Maps (your Google Business profile). Leave it empty to fall back to the approximate OpenStreetMap view (bbox + marker, no exact address).",
+    "_comment": "Map centering, in priority order: (1) 'center' = exact 'lat,lng' drops a labeled pin and centers there; (2) 'googleQuery' = Google Maps name search; (3) 'bbox'+'marker' = approximate OpenStreetMap fallback. Clear 'center' to fall back to the others.",
+    "center": "48.7475,2.3005",
+    "label": "Sceaux Sérénité",
     "googleQuery": "Sceaux Serenity",
-    "zoom": 15,
+    "zoom": 16,
     "bbox": "2.275,48.770,2.325,48.795",
     "marker": "48.7800,2.2900"
   },
