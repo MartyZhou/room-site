@@ -425,11 +425,13 @@
       ? `mailto:${site.contact.email}?subject=${subj}`
       : '#';
 
-    // Map iframe — center on exact coords, else Google name search, else OSM
+    // Map iframe — full address (house-level), else exact coords, else name, else OSM
     const m = site.map || {};
     const iframe = document.getElementById('map-iframe');
     const zoom = m.zoom || 16;
-    if (m.center) {
+    if (m.address) {
+      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.address)}&z=${zoom}&output=embed`;
+    } else if (m.center) {
       // q=lat,lng(Label) drops a labeled pin and centers the view on it
       const label = m.label ? ` (${m.label})` : '';
       iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(m.center + label)}&z=${zoom}&output=embed`;
@@ -443,6 +445,7 @@
     const mapLink = document.getElementById('map-link');
     if (mapLink) {
       const href = site.listings?.google
+        || (m.address ? `https://maps.google.com/maps?q=${encodeURIComponent(m.address)}&z=${zoom}` : null)
         || (m.center ? `https://maps.google.com/maps?q=${encodeURIComponent(m.center)}&z=${zoom}` : null)
         || (m.googleQuery ? `https://maps.google.com/maps?q=${encodeURIComponent(m.googleQuery)}` : null);
       if (href) {
@@ -453,7 +456,31 @@
       }
     }
 
-    // Rewrite OG / canonical / JSON-LD URLs from site.siteUrl
+    // Rewrite OG / canonical / JSON-LD from site config
+    const ld = document.getElementById('ld-json');
+    let ldData = null;
+    if (ld) { try { ldData = JSON.parse(ld.textContent); } catch (_) {} }
+
+    if (ldData) {
+      // Address + geo from site.json (single source of truth)
+      const addr = site.address || {};
+      if (addr.street || addr.city) {
+        ldData.address = {
+          '@type': 'PostalAddress',
+          streetAddress: addr.street || undefined,
+          postalCode: addr.postalCode || undefined,
+          addressLocality: addr.city || undefined,
+          addressRegion: addr.region || undefined,
+          addressCountry: addr.country || undefined,
+        };
+      }
+      const center = (site.map || {}).center;
+      if (center && /^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/.test(center)) {
+        const [lat, lng] = center.split(',').map(Number);
+        ldData.geo = { '@type': 'GeoCoordinates', latitude: lat, longitude: lng };
+      }
+    }
+
     if (site.siteUrl) {
       const base = site.siteUrl.replace(/\/$/, '');
       const featured = Number(site.photos?.featured) || 1;
@@ -466,17 +493,10 @@
       setMeta('meta[property="og:image"]', 'content', imgUrl);
       setMeta('meta[name="twitter:image"]', 'content', imgUrl);
       setMeta('link[rel="canonical"]', 'href', `${base}/`);
-      // Update JSON-LD
-      const ld = document.getElementById('ld-json');
-      if (ld) {
-        try {
-          const data = JSON.parse(ld.textContent);
-          data.url = `${base}/`;
-          data.image = imgUrl;
-          ld.textContent = JSON.stringify(data, null, 2);
-        } catch (_) {}
-      }
+      if (ldData) { ldData.url = `${base}/`; ldData.image = imgUrl; }
     }
+
+    if (ld && ldData) ld.textContent = JSON.stringify(ldData, null, 2);
   };
 
   // ---------- Lang switch ------------------------------------------------

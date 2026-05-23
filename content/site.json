@@ -3,8 +3,8 @@
   "siteUrl": "https://sceauxserenite.example.com",
   "_siteUrl_comment": "Public canonical URL of the deployed site. Used for og:image and JSON-LD. Update once you have a real domain.",
   "contact": {
-    "phone": "+33600000000",
-    "phoneDisplay": "+33 6 00 00 00 00",
+    "phone": "+33667802503",
+    "phoneDisplay": "+33 6 67 80 25 03",
     "email": "contact@example.com",
     "whatsapp": true
   },
@@ -30,12 +30,20 @@
       "details":   { "fr": "Détails",       "en": "Details",      "items": [41, 42, 43, 44] }
     }
   },
+  "address": {
+    "street": "55 Rue de Fontenay",
+    "postalCode": "92330",
+    "city": "Sceaux",
+    "region": "Île-de-France",
+    "country": "FR"
+  },
   "map": {
-    "_comment": "Map centering, in priority order: (1) 'center' = exact 'lat,lng' drops a labeled pin and centers there; (2) 'googleQuery' = Google Maps name search; (3) 'bbox'+'marker' = approximate OpenStreetMap fallback. Clear 'center' to fall back to the others.",
-    "center": "48.7475,2.3005",
+    "_comment": "Map centering, in priority order: (1) 'address' = full address, Google geocodes to the exact house; (2) 'center' = exact 'lat,lng'; (3) 'googleQuery' = name search; (4) 'bbox'+'marker' = approximate OSM fallback. 'center' coords are also used for the JSON-LD geo block and the Maps link.",
+    "address": "55 Rue de Fontenay, 92330 Sceaux",
+    "center": "48.7791,2.2917",
     "label": "Sceaux Sérénité",
     "googleQuery": "Sceaux Serenity",
-    "zoom": 16,
+    "zoom": 17,
     "bbox": "2.275,48.770,2.325,48.795",
     "marker": "48.7800,2.2900"
   },
