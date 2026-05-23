@@ -382,6 +382,17 @@
     const telDigits = tel.replace(/[^\d+]/g, '').replace(/^\+/, '');
     document.getElementById('airbnb-link').href = site.listings?.airbnb || '#';
     document.getElementById('booking-link').href = site.listings?.booking || '#';
+
+    // Google Business (shown only if a URL is configured)
+    const googleBtn = document.getElementById('google-link');
+    if (googleBtn) {
+      if (site.listings?.google) {
+        googleBtn.href = site.listings.google;
+        googleBtn.hidden = false;
+      } else {
+        googleBtn.hidden = true;
+      }
+    }
     document.getElementById('call-link').href = tel ? `tel:${tel}` : '#';
     document.getElementById('sms-link').href = tel ? `sms:${tel}` : '#';
 

@@ -10,7 +10,8 @@
   },
   "listings": {
     "airbnb": "https://www.airbnb.fr/rooms/1021507317870791676",
-    "booking": "https://www.booking.com/"
+    "booking": "https://www.booking.com/",
+    "google": "https://share.google/OIvSrMxeCTuuyCVMs"
   },
   "photos": {
     "_comment": "Photo configuration. 'featured' is the big highlighted photo in the gallery (1..total). 'hero' lists the 4 supporting photos shown next to it. 'categories' groups photos for the all-photos overlay tabs — adjust the numbers to match what's actually in each photo.",

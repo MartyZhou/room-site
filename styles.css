@@ -588,7 +588,7 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; 
 
 .platforms {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
   max-width: 880px;
   margin: 0 auto 36px;
@@ -610,6 +610,7 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; 
 }
 .platform.airbnb:hover { border-color: var(--airbnb); }
 .platform.booking:hover { border-color: var(--booking); }
+.platform.google:hover { border-color: #4285f4; }
 .platform-logo {
   width: 52px;
   height: 52px;
@@ -621,6 +622,7 @@ h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; 
 }
 .platform.airbnb .platform-logo { background: var(--airbnb); color: white; }
 .platform.booking .platform-logo { background: var(--booking); color: white; }
+.platform.google .platform-logo { background: #4285f4; color: white; }
 .platform-logo svg { width: 30px; height: 30px; }
 .platform-text { flex: 1; min-width: 0; }
 .platform-cta {

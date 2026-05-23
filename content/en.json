@@ -115,6 +115,8 @@
     "airbnbSub": "Real-time availability, secure payment",
     "bookingCta": "View on Booking.com",
     "bookingSub": "Flexible cancellation on select dates",
+    "googleCta": "View on Google",
+    "googleSub": "Google Business profile & reviews",
     "directTitle": "Pricing & availability",
     "callBtn": "Call",
     "smsBtn": "Send a text",
