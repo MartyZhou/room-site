@@ -1,0 +1,21 @@
+{
+  "name": "sceaux-serenite-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bilingual (FR/EN) listing page — TypeScript source, bundled to app.js for deployment.",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/app.ts --bundle --outfile=app.js --target=es2019",
+    "watch": "esbuild src/app.ts --bundle --outfile=app.js --target=es2019 --watch",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.scripts.json --noEmit",
+    "serve": "tsx scripts/serve.ts",
+    "bundle:content": "tsx scripts/build_bundle.ts",
+    "update:airbnb": "tsx scripts/update_from_airbnb.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.6.0"
+  }
+}

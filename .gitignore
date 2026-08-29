@@ -5,3 +5,6 @@ node_modules/
 .vscode/
 .idea/
 .private
+
+# Build artifact — generated from src/app.ts by `npm run build`
+/app.js

@@ -1,10 +1,10 @@
-# Netlify configuration — works as-is with no build step.
-# Cloudflare Pages users: this file is ignored; the project also works as a
-# "no build command, output dir = /" project on Cloudflare Pages.
+# Netlify configuration.
+# Cloudflare Pages users: this file is ignored; set the build command and
+# output directory to the same values in the Cloudflare Pages dashboard.
 
 [build]
   publish = "."
-  command = ""
+  command = "npm install && npm run build"
 
 [[headers]]
   for = "/*"
